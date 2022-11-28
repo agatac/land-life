@@ -14,13 +14,13 @@ const MenuItem = (props) => {
 const Navbar = (props) => {
 	return (
 		<Flex as="nav" align="center" justify="space-between" wrap="wrap" w="100%" bg="background.primary" color="font.primary" {...props}>
-			<Flex align="center">
+			<Flex align="center" ml="12">
 				<img src={logo} className="App-logo" alt="logo" />
 			</Flex>
-			<Flex align="center" justify="center" direction={['column', 'row', 'row', 'row']} pt={[4, 4, 0, 0]}>
+			<Flex align="center" justify="center" direction={['column', 'row', 'row', 'row']} pt={[4, 4, 0, 0]} mr="12">
 				<MenuItem to="/">Home</MenuItem>
 				<MenuItem to="/ranking">Ranking</MenuItem>
-				{/* <MenuItem to="/best-method">Best method</MenuItem> */}
+				<MenuItem to="/species">Species</MenuItem>
 			</Flex>
 		</Flex>
 	);

@@ -1,8 +1,11 @@
 import './App.css';
 import { extendTheme, ChakraProvider } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Ranking from './components/Ranking';
+import Species from './components/Species';
+import parseCsv from './util/parseCsv';
 
 const colors = {
 	// TODO dark-mode theme
@@ -24,13 +27,27 @@ const theme = extendTheme({ colors });
 const Home = () => <div>Home page</div>;
 
 function App() {
+	const [species, setSpecies] = useState([]);
+	const [fieldData, setFieldData] = useState([]);
+
+	useEffect(() => {
+		// TODO error handle (no file in /data, invalid format etc)
+		Promise.all([fetch('./data/species.csv'), fetch('./data/field_data.csv')])
+			.then(([s, d]) => Promise.all([s.text(), d.text()]))
+			.then(([s, d]) => {
+				setSpecies(parseCsv(s));
+				setFieldData(parseCsv(d, ';'));
+			});
+	}, []);
+
 	return (
 		<ChakraProvider theme={theme}>
 			<BrowserRouter>
 				<Navbar />
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="ranking" element={<Ranking />} />
+					<Route path="ranking" element={<Ranking species={species} fieldData={fieldData} />} />
+					<Route path="species" element={<Species species={species} fieldData={fieldData} />} />
 				</Routes>
 			</BrowserRouter>
 		</ChakraProvider>

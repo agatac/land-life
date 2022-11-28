@@ -1,30 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Box, Select } from '@chakra-ui/react';
-import parseCsv from '../util/parseCsv';
 
-const Ranking = () => {
-	const [species, setSpecies] = useState([]);
-	const [fieldData, setFieldData] = useState([]);
+const Ranking = ({ species, fieldData }) => {
 	const [availableYears, setAvailableYears] = useState([]);
 	const [year, setYear] = useState();
 	const [dataPerYear, setDataPerYear] = useState();
 
 	useEffect(() => {
-		// TODO error handle (no file in /data, invalid format etc)
-		Promise.all([fetch('./data/species.csv'), fetch('./data/field_data.csv')])
-			.then(([s, d]) => Promise.all([s.text(), d.text()]))
-			.then(([s, d]) => {
-				setSpecies(parseCsv(s));
-				const parsedFieldData = parseCsv(d, ';');
-				setFieldData(parsedFieldData);
-				const uniqueYears = [...new Set(parsedFieldData.map((d) => d.year_monitored))];
-				setAvailableYears(uniqueYears); // could add sorting here
-				if (uniqueYears.length > 0) {
-					// pre-select the most recent year
-					setYear(uniqueYears[uniqueYears.length - 1]);
-				}
-			});
-	}, []);
+		const uniqueYears = [...new Set(fieldData.map((d) => d.year_monitored))];
+		setAvailableYears(uniqueYears); // could add sorting here
+		if (uniqueYears.length > 0) {
+			// pre-select the most recent year
+			setYear(uniqueYears[uniqueYears.length - 1]);
+		}
+	}, [fieldData]);
 
 	useEffect(() => {
 		if (!year || !fieldData?.length) {
