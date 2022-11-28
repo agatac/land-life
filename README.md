@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Land Life Company assignment
+
+I used "Create React App" to quickly bootstrap this project. The rest of this README is auto-generated and explains how to run the app (TL;DR `yarn start`). Both `species.csv` and `field_data.scv` are in `/public/data`. There's no backend here, no db. I'm reading the files from that folder and doing the calculations in the frontend.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
