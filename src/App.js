@@ -2,7 +2,7 @@ import './App.css';
 import { extendTheme, ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
-// import Ranking from './components/Ranking';
+import Ranking from './components/Ranking';
 
 const colors = {
 	// TODO dark-mode theme
@@ -30,7 +30,7 @@ function App() {
 				<Navbar />
 				<Routes>
 					<Route path="/" element={<Home />} />
-					{/* <Route path="ranking" element={<Ranking />} /> */}
+					<Route path="ranking" element={<Ranking />} />
 				</Routes>
 			</BrowserRouter>
 		</ChakraProvider>

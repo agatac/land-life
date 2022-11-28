@@ -19,7 +19,7 @@ const Navbar = (props) => {
 			</Flex>
 			<Flex align="center" justify="center" direction={['column', 'row', 'row', 'row']} pt={[4, 4, 0, 0]}>
 				<MenuItem to="/">Home</MenuItem>
-				{/* <MenuItem to="/ranking">Ranking</MenuItem> */}
+				<MenuItem to="/ranking">Ranking</MenuItem>
 				{/* <MenuItem to="/best-method">Best method</MenuItem> */}
 			</Flex>
 		</Flex>
