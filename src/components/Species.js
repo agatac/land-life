@@ -47,7 +47,8 @@ const Species = ({ species, fieldData }) => {
 
 	return (
 		<Box m="12">
-			<Select placeholder="Select species" value={selectedSpeciesId} onChange={(e) => setSelectedSpeciesId(e.target.value)}>
+			<p>This screen shows what the best method is for each tree species.</p>
+			<Select placeholder="Select species" value={selectedSpeciesId} onChange={(e) => setSelectedSpeciesId(e.target.value)} mt="2">
 				{species?.map((s) => (
 					<option key={s.tree_species_id} value={s.tree_species_id}>
 						{s.latin_name}

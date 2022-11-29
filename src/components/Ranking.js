@@ -17,6 +17,7 @@ const Ranking = ({ species, fieldData }) => {
 
 	useEffect(() => {
 		if (!year || !fieldData?.length) {
+			setDataPerYear([]);
 			return;
 		}
 		const sortedByYear = fieldData.filter((d) => d.year_monitored === year).sort((a, b) => b.height - a.height);
@@ -27,7 +28,8 @@ const Ranking = ({ species, fieldData }) => {
 
 	return (
 		<Box m="12">
-			<Select placeholder="Select year" value={year} onChange={(e) => setYear(e.target.value)}>
+			<p>This screen shows top 5 highest trees per year.</p>
+			<Select placeholder="Select year" value={year} onChange={(e) => setYear(e.target.value)} w="160px" mt="2">
 				{availableYears?.map((y) => (
 					<option key={y} value={y}>
 						{y}
@@ -35,13 +37,12 @@ const Ranking = ({ species, fieldData }) => {
 				))}
 			</Select>
 			{(dataPerYear?.length ?? 0) > 0 && (
-				<Box mt="8">
+				<Box mt="4">
 					{dataPerYear.map((d) => {
 						const speciesName = species?.find((s) => s.tree_species_id === d.species_id);
 						return (
 							<div key={d.individual_tree_id}>
-								{d.individual_tree_id}
-								{!!speciesName?.latin_name && ` (${speciesName.latin_name})`}: {d.height}
+								{!!speciesName?.latin_name && ` ${speciesName.latin_name}`}: {d.height}
 							</div>
 						);
 					})}

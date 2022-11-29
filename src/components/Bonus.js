@@ -39,6 +39,7 @@ const Bonus = ({ species, fieldData }) => {
 
 	useEffect(() => {
 		if (!selectedMethod || !fieldData?.length || !species?.length) {
+			setChartData(undefined);
 			return;
 		}
 		// Limit field_data to the selected method only
@@ -78,7 +79,8 @@ const Bonus = ({ species, fieldData }) => {
 
 	return (
 		<Box m="12">
-			<Select placeholder="Select method" value={selectedMethod} onChange={(e) => setSelectedMethod(e.target.value)}>
+			<p>This screen shows a graph plotting the average height (taking into account all the years present in the data) for each species.</p>
+			<Select placeholder="Select method" value={selectedMethod} onChange={(e) => setSelectedMethod(e.target.value)} mt="2">
 				{methods?.map((m) => (
 					<option key={m} value={m}>
 						{m}
