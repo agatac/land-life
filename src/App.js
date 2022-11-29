@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Ranking from './components/Ranking';
 import Species from './components/Species';
 import parseCsv from './util/parseCsv';
+import Bonus from './components/Bonus';
 
 const colors = {
 	// TODO dark-mode theme
@@ -24,7 +25,13 @@ const colors = {
 };
 const theme = extendTheme({ colors });
 
-const Home = () => <Box m="8">Rough frontend drafted for the assignment.</Box>;
+const Home = () => (
+	<Box m="8" p="12">
+		Rough frontend drafted for the assignment. This is NOT how I would write code in a production app. If I understand the assignment correctly, the
+		point was to create a POC within a limited time. Normally I'd use TypeScript and create models and types. I'd make sure the page is actually
+		designed nicely. There would be backend providing the data and frontend could focus on the UX.
+	</Box>
+);
 
 function App() {
 	// Preferably this would be TS
@@ -49,6 +56,7 @@ function App() {
 					<Route path="/" element={<Home />} />
 					<Route path="ranking" element={<Ranking species={species} fieldData={fieldData} />} />
 					<Route path="species" element={<Species species={species} fieldData={fieldData} />} />
+					<Route path="bonus" element={<Bonus species={species} fieldData={fieldData} />} />
 				</Routes>
 			</BrowserRouter>
 		</ChakraProvider>

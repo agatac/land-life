@@ -21,6 +21,7 @@ const Navbar = (props) => {
 				<MenuItem to="/">Home</MenuItem>
 				<MenuItem to="/ranking">Ranking</MenuItem>
 				<MenuItem to="/species">Species</MenuItem>
+				<MenuItem to="/bonus">Bonus</MenuItem>
 			</Flex>
 		</Flex>
 	);
