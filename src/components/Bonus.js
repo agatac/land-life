@@ -51,10 +51,10 @@ const Bonus = ({ species, fieldData }) => {
 			acc[speciesId].push(curr);
 			return acc;
 		}, {});
-		// Calculate average health per method
+		// Calculate average height per method and species
 		const averageHeights = [];
 		for (const key in speciesData) {
-			const heightScore = speciesData[key].reduce((acc, curr) => {
+			const totalHeight = speciesData[key].reduce((acc, curr) => {
 				try {
 					const height = parseInt(curr.height, 10);
 					return Number.isInteger(height) ? acc + height : 0;
@@ -62,7 +62,7 @@ const Bonus = ({ species, fieldData }) => {
 					return 0;
 				}
 			}, 0);
-			const averageHeight = heightScore / speciesData[key].length;
+			const averageHeight = totalHeight / speciesData[key].length;
 			averageHeights.push({ speciesId: key, averageHeight });
 		}
 		setChartData({
