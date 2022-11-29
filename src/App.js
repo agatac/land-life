@@ -1,5 +1,5 @@
 import './App.css';
-import { extendTheme, ChakraProvider } from '@chakra-ui/react';
+import { extendTheme, Box, ChakraProvider } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -24,9 +24,10 @@ const colors = {
 };
 const theme = extendTheme({ colors });
 
-const Home = () => <div>Home page</div>;
+const Home = () => <Box m="8">Rough frontend drafted for the assignment.</Box>;
 
 function App() {
+	// Preferably this would be TS
 	const [species, setSpecies] = useState([]);
 	const [fieldData, setFieldData] = useState([]);
 
